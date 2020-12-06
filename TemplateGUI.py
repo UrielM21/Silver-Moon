@@ -243,6 +243,7 @@ class Ui_Form(object):
         
         self.zetesLogoLayout.setContentsMargins(0, 0, 0, 0)
         self.zetesLogoLayout.setObjectName("zetesLogoLayout")
+        # self.zetesLogoLayout.setStyleSheet("QGroupBox { border: 0px;}")
         viewerLogo = QtImageViewer()
         self.zetesLogoLayout.addWidget(viewerLogo)
         viewerLogo.loadImageFromFile("./logo_zetes.jpeg")
@@ -273,7 +274,9 @@ class Ui_Form(object):
         self.homeLayout.setObjectName("homeLayout")
 
         self.pushButton = QtWidgets.QPushButton(self.formLayoutWidget)
-        self.pushButton.setObjectName("pushButton")
+        self.pushButton.setObjectName("pushButton") # pushButton
+        # self.pushButton.setIcon(QtGui.QIcon("./logo_zetes.jpeg"))
+        
         self.homeLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.pushButton)
 
         self.pushButton_2 = QtWidgets.QPushButton(self.formLayoutWidget)

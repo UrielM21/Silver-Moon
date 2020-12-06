@@ -1,4 +1,4 @@
 # Silver-Moon
 GUI
 
-![plot](./GUIpng)
+![Alt text](GUI.png?raw=true "InConstruction GUI")

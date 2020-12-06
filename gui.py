@@ -1,7 +1,7 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication
 from TemplateGUI import Ui_Form, QtImageViewer
-import qdarkstyle
+import qdarkstyle #  conda install -c conda-forge qdarkstyle 
 
 
 import os.path
@@ -193,46 +193,121 @@ class QtImageViewer(QGraphicsView):
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 if __name__ == '__main__':
-	Form, Window = uic.loadUiType("templateGUI.ui")
+    Form, Window = uic.loadUiType("TemplateGUI.ui")
 
-	app = QApplication([])
-	window = Window()
-	form = Form()
-	form.setupUi(window)
+    app = QApplication([])
+    window = Window()
+    form = Form()
+    form.setupUi(window)
 
-	# app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
-	app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
+    # app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+    app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
 
-	viewerLogo = QtImageViewer()
-	form.zetesLogoLayout.addWidget(viewerLogo)
-	form.verticalLayoutWidget.setStyleSheet("border: 0px") 
+    viewerLogo = QtImageViewer()
+    form.zetesLogoLayout.addWidget(viewerLogo)
+    form.verticalLayoutWidget.setStyleSheet("border: 0px") 
 
-	# Logo
-	viewerLogo.loadImageFromFile("./ZETESENTEROAsset 2.svg")
-	viewerLogo.show()
+    # Logo
+    viewerLogo.loadImageFromFile("logo_zetes.jpeg")
+    viewerLogo.show()
 
-	# Imagen principal
-	viewer = QtImageViewer()
-	form.viewsLayout.addWidget(viewer)
-	form.horizontalLayoutWidget.setStyleSheet("border: 0px")
-	viewer.loadImageFromFile("./ZETESENTEROAsset 2.svg")
-	viewer.show()
+    # Imagen principal
+    viewer = QtImageViewer()
+    form.viewsLayout.addWidget(viewer)
+    # form.horizontalLayoutWidget.setStyleSheet("border: 0px")
+    viewer.loadImageFromFile("moonLand1.jpg")
+    viewer.show()
 
-	# Botones Home
-	form.pushButton.resize(100, 100)
-	form.pushButton.setText("")
-	form.pushButton.setIcon(QtGui.QIcon("home.svg"))
+    # Imagen secundaria
+    histLabel = QtWidgets.QLabel("Histogram")
+    form.tinyViewerLayout.addWidget(histLabel)
 
-	# Controllers 0 vertical 1 Horizontal
-	slider1 = QtWidgets.QSlider(1, form.verticalLayoutWidget_2)
-	slider1.setValue(50)
+    tinyViewer = QtImageViewer()
+    form.tinyViewerLayout.addWidget(tinyViewer)
+    form.verticalLayoutWidget_3.setStyleSheet("border: 0px")
+    tinyViewer.loadImageFromFile("hist3.jpg")
+    tinyViewer.show()
 
-	# self.segmSliderOpacity = qt.QSlider(qt.Qt.Horizontal)
-	# self.segmSliderOpacity.setValue(100)
-	# self.segmentacionLayout.addWidget(self.segmSliderOpacity,6,1,1,2)
+    # Botones Home
+    # form.pushButton.resize(100, 100)
+    form.pushButton.setText("")
+    form.pushButton.setIcon(QtGui.QIcon("home.svg"))
+    form.pushButton.setIconSize(QtCore.QSize(30,30))
+
+    form.pushButton_2.setText("")
+    form.pushButton_2.setIcon(QtGui.QIcon("terminal.svg"))
+    form.pushButton_2.setIconSize(QtCore.QSize(30,30))
+
+    form.pushButton_3.setText("")
+    form.pushButton_3.setIcon(QtGui.QIcon("rotateImage.svg"))
+    form.pushButton_3.setIconSize(QtCore.QSize(30,30))
+
+    form.pushButton_4.setText("")
+    form.pushButton_4.setIcon(QtGui.QIcon("MarkUp.png"))
+    form.pushButton_4.setIconSize(QtCore.QSize(30,30))
+
+    # Controllers 0 vertical 1 Horizontal
+    label1 = QtWidgets.QLabel("Intensity level")
+    form.viewsControllerLayout.addWidget(label1)
+
+    slider1 = QtWidgets.QSlider(1)
+    slider1.resize(200,15)
+    slider1.setValue(50)
+    form.viewsControllerLayout.addWidget(slider1)
+
+
+    label2 = QtWidgets.QLabel("Opacity")
+    form.viewsControllerLayout.addWidget(label2)
+    slider2 = QtWidgets.QSlider(1)
+    slider2.resize(200,15)
+    slider2.setValue(95)
+    form.viewsControllerLayout.addWidget(slider2)
+
+
+    label3 = QtWidgets.QLabel("R level")
+    form.viewsControllerLayout.addWidget(label3)
+    slider3 = QtWidgets.QSlider(1)
+    slider3.resize(200,15)
+    slider3.setValue(95)
+    form.viewsControllerLayout.addWidget(slider3)
+
+
+    label4 = QtWidgets.QLabel("G level")
+    form.viewsControllerLayout.addWidget(label4)
+    slider4 = QtWidgets.QSlider(1)
+    slider4.resize(200,15)
+    slider4.setValue(95)
+    form.viewsControllerLayout.addWidget(slider4)
+
+
+    label5 = QtWidgets.QLabel("B level")
+    form.viewsControllerLayout.addWidget(label5)
+    slider5 = QtWidgets.QSlider(1)
+    slider5.resize(200,15)
+    slider5.setValue(95)
+    form.viewsControllerLayout.addWidget(slider5)
+
+    segmentationCheckbox = QtWidgets.QCheckBox("Show segmentation")
+    form.viewsControllerLayout.addWidget(segmentationCheckbox)
+
+    annotationsCheckbox = QtWidgets.QCheckBox("Show annotations")
+    form.viewsControllerLayout.addWidget(annotationsCheckbox)
+
+    # Data probes
+    location = QtWidgets.QLabel("Latitude (deg N): 0.6875 ; Longitude (deg E): 23.4333")
+    form.dataProbeLayout.addWidget(location)
+
+    # TaskType Selectors (SLAM or DeepLearning)
+    form.checkBox.setText("Navegation")
+    form.checkBox_2.setText("Vision")
+
+
+    # self.segmSliderOpacity = qt.QSlider(qt.Qt.Horizontal)
+    # self.segmSliderOpacity.setValue(100)
+    # self.segmentacionLayout.addWidget(self.segmSliderOpacity,6,1,1,2)
 
 
 
-	window.show()
+    window.show()
 
-	app.exec_()
+    app.exec_()

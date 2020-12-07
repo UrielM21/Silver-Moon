@@ -298,6 +298,7 @@ class Ui_Form(object):
         self.verticalLayoutWidget_3 = QtWidgets.QWidget(Form)
         self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(1060, 50, 181, 151))
         self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")
+        
         self.tinyViewerLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_3)
         self.tinyViewerLayout.setContentsMargins(0, 0, 0, 0)
         self.tinyViewerLayout.setObjectName("tinyViewerLayout")
